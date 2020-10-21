@@ -79,14 +79,14 @@ int main() {
         cout << second << endl;
     }
 }*/
-//--------------Задача "Перемещение строк"----------------------
+//--------------Задача "Перемещение строк"-----------------------
 /*void MoveStrings (vector<string>& source, vector<string>& destination) {
     for (int i = 0; i < source.size(); ++i) {
         destination.push_back(source[i]);
     }
     source.clear();
 }*/
-//--------------Задача "Разворот последовательности"------------
+//--------------Задача "Разворот последовательности"--------------
 /*void Reverse (vector<int>& v) {
     for (int i = 0; i < v.size()/2; ++i){
          int tmp = v[i];
@@ -108,31 +108,53 @@ int main() {
 /*void Funct (vector<int>& n){
     sort(begin(n), end(n));
 }*/
-//--------------Задача "средняя температура"----------------------
+//--------------Задача "очередь"----------------------
+
+void Worry (){
+    int w = 0;
 
 
+}
+void Quiet(){
 
-
-
+}
 
 
 int main() {
 
 
-//--------------Задача "средняя температура"----------------------
+//--------------Задача "Очередь"----------------------
+int n; // operations quantity
+cin >> n;
+vector<int> num (n);
 
-int t;
+
+
+
+
+//--------------Задача "средняя температура"----------------------
+/*int t;
 cin >> t;
 vector<int> days_t_value;
-
-cout << t << endl;
-for (int i : days_t_value)
-cout << i << " ";
-
-
-
-
-
+int t_sum = 0;
+for (int i = 0; i < t; ++i) {
+    int inpu = 0;
+    cin >> inpu;
+    days_t_value.push_back(inpu);
+    t_sum += inpu;
+}
+int middle_t = t_sum / t;
+vector<int> days_quantity;
+for (int i = 0; i < t; ++i) {
+    if (days_t_value[i] > middle_t) {
+        days_quantity.push_back(i);
+    }
+}
+cout << days_quantity.size() << endl;
+for (int day_index : days_quantity) {
+    cout << day_index << " ";
+}
+cout << endl;*/
 //--------------Задача от Сани "использование итераторов"---------
     /*vector<int> n = { 4, 5, 8, 1, 2, 20, 54, 72, 12, 6 };
     Funct(n);
