@@ -123,8 +123,9 @@ int main() {
 
 int t;
 cin >> t;
-vector<int> days_t_value (t);
-cout << t;
+vector<int> days_t_value;
+
+cout << t << endl;
 for (int i : days_t_value)
 cout << i << " ";
 
