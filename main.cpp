@@ -108,30 +108,81 @@ int main() {
 /*void Funct (vector<int>& n){
     sort(begin(n), end(n));
 }*/
-//--------------Задача "очередь"----------------------
-
-void Worry (){
-    int w = 0;
-
-
+//--------------Задача "Очередь v1""----------------------------------
+void Worry(vector<string>& v, int n){
+    v[n-1] = "WORRY";
 }
-void Quiet(){
-
+void Quiet(vector<string>& v, int n){
+    v[n-1] = "QUIET";
 }
+void ComePlus(vector<string>& v, int n){
+    for (int i = 0; i < n; ++i) {
+        string s = "COME";
+        v.push_back(s);
+    }
+}
+void ComeMines(vector<string>& v, int n) {
+    for (int i = 0; i < abs(n); ++i) {
+        v.pop_back();
+    }
+}
+int WorryCount(vector<string>& v){
+    int wc = 0;
+    for (int i = 0; i < v.size(); ++i) {
+        if (v[i] == "WORRY"){
+            ++wc;
+        }
+    }
+    return wc;
+}
+//--------------Задача "очередь"----------------------------------
 
 
 int main() {
 
 
-//--------------Задача "Очередь"----------------------
-int n; // operations quantity
-cin >> n;
-vector<int> num (n);
+//--------------Задача "Очередь v1"----------------------
+int opertations_quantity; // operations quantity
+cin >> opertations_quantity;
+vector<string> stackNum;
+string command;
+int command_meaning;
+for(int i = 0; i < opertations_quantity; ++i){
+    cin >> command;
+
+    if (command == "WORRY_COUNT"){
+        int wc = WorryCount(stackNum);
+        cout << "WORRY COUNT: "<< wc << endl;
+        continue;
+    }
+
+    if(command == "COME" || command == "WORRY" || command == "QUIET"){
+        cin >> command_meaning;
+
+        if (command == "COME" && command_meaning > 0){
+            ComePlus(stackNum, command_meaning);
+        }
+        if (command == "COME" && command_meaning < 0){
+            ComeMines(stackNum, command_meaning);
+        }
+        if (command == "WORRY" && command_meaning > 0){
+            Worry(stackNum, command_meaning);
+        }
+        if (command == "QUIET" && command_meaning > 0){
+            Quiet(stackNum, command_meaning);
+        }
+        continue;
+    }
 
 
 
+    cout << "Please, write a command from list below:\n"<< "COME (+/-)N <- for adding/deleting N humans \n"
+        << "WORRY N <- change the human N \n" << " QUIET N <- change the human N \n"
+        << "WORRY_COUNT <- for checking worrying people \n";
 
-
+}
+for (string str : stackNum)
+    cout << str << " ";
 //--------------Задача "средняя температура"----------------------
 /*int t;
 cin >> t;
