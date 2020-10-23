@@ -109,7 +109,7 @@ int main() {
     sort(begin(n), end(n));
 }*/
 //--------------Задача "Очередь v1""----------------------------------
-void Worry(vector<string>& v, int n){
+/*void Worry(vector<string>& v, int n){
     v[n-1] = "WORRY";
 }
 void Quiet(vector<string>& v, int n){
@@ -134,15 +134,91 @@ int WorryCount(vector<string>& v){
         }
     }
     return wc;
+}*/
+//--------------Разбор map v1----------------------------------
+/*void PrintMap(map<int, string>& m){
+    for (auto item : m){
+        cout << item.first <<": "<< item.second<< endl;
+    }
 }
-//--------------Задача "очередь"----------------------------------
+map<string, int> ReversedMap(const map<int, string>& m){ // switch map<int, string> to map<string, int>
+    map<string, int> result;
+    for (auto item : m){ // лучше если -> for(const auto& item : m)
+        result[item.second] = item.first;
+    }
+    return result;
+}
+void PrintReversedMap(const map<string, int>& m) { // printing map<string, int>
+    for (auto item : m) { // лучше если -> for(const auto& item : m)
+       cout << item.first << ": "<< item.second << endl;
+    }
+}*/
+//--------------Разбор map v2, v3----------------------------------
+/*void PrintMap(const map<string, int>& m){
+    for (const auto& item : m){
+        cout << item.first << ": " << item.second << endl;
+    }
+}*/
+
+void BuildCharCounters (map<int, string>& first_m, map<int, string>& second_m){
+
+
+}
+
 
 
 int main() {
 
+int operations_quantity;
+cin >> operations_quantity;
 
+map<int, string> map_one;
+map<int, string> map_two;
+
+
+// колличество букв встречающихся в сравниваемых словах
+// if (a[0][0] == b )
+
+//--------------Разбор map v4----------------------------------
+/*vector<string> v = {"one", "two", "three"};
+map<char, vector<string>> grouped_words;
+for (const string& item : v){
+    grouped_words[item[0]].push_back(item);
+}
+for(const auto& i : grouped_words){
+    cout << i.first << endl;
+    for(const string& w : i.second){
+        cout << w << endl;
+    }
+    cout << endl;
+}*/
+//--------------Разбор map v3----------------------------------
+/*vector<string> v = {"one", "two", "three", "two"};
+map<string, int> dublicateCounter;
+
+for (const auto& item : v){
+    ++dublicateCounter[item];   // как только произошло обращение к конкретному элементу словаря с помощью
+                                // квадратных скобок, компилятору нужно создать пару ключ-значение, с данным ключем
+                                // и значением по умолчанию. В данном случае, как только происходит обращение
+                                // к какому то ключу, если этот ключ был, то компилятор возвращает ссылку на него
+                                // и успешно происходит ++dublicateCounter[item], а если такого ключа не было, то
+                                // компилятор его сам добавляет со значением 0, тк целое число поумолчанию = 0;
+} // обращение к несуществующему ключу может увеличить размер map(словаря)
+PrintMap(dublicateCounter);*/
+//--------------Разбор map v2----------------------------------
+/*map<string, int> spellsNums = {{"alohomora", 1}, {"accio", 2}, {"avada kedavra", 3}};
+PrintMap(spellsNums);*/
+//--------------Разбор map v1----------------------------------
+/*map<int, string> dates;
+dates[1994] = "Sonya's birth date";
+dates[1992] = "My birth date";
+dates[2020] = "fucking Corona";
+PrintMap(dates);
+dates.erase(2020); // .erase(m) - удаляет элемент с ключем "m" из map
+PrintMap(dates);
+PrintReversedMap(ReversedMap(dates));*/
 //--------------Задача "Очередь v1"----------------------
-int opertations_quantity; // operations quantity
+/*int opertations_quantity; // operations quantity
 cin >> opertations_quantity;
 vector<string> stackNum;
 string command;
@@ -174,15 +250,13 @@ for(int i = 0; i < opertations_quantity; ++i){
         continue;
     }
 
-
-
     cout << "Please, write a command from list below:\n"<< "COME (+/-)N <- for adding/deleting N humans \n"
         << "WORRY N <- change the human N \n" << " QUIET N <- change the human N \n"
         << "WORRY_COUNT <- for checking worrying people \n";
 
 }
 for (string str : stackNum)
-    cout << str << " ";
+    cout << str << " ";*/
 //--------------Задача "средняя температура"----------------------
 /*int t;
 cin >> t;
