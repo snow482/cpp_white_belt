@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <chrono>
 #include <map>
+#include <list>
+#include <utility>
 using namespace std;
 using namespace std::chrono;
 
@@ -160,25 +162,202 @@ void PrintReversedMap(const map<string, int>& m) { // printing map<string, int>
     }
 }*/
 
-void BuildCharCounters (map<int, string>& first_m, map<int, string>& second_m){
+//--------------Anagrams----------------------------------
+/*map<char, int> BuildCharCounters (const string& str) {
+    map<char, int> counters;
+    for(char ch : str){
+        ++counters[ch];
+    }
+    return counters;
+}*/
+//--------------Capitals library----------------------------------
 
 
+
+
+
+
+
+//--------------Iterators task v1.0------------------------------------
+/*list<int> TestCountsAdding (int n){
+    list<int> listName;
+    for (int i = 0; i < n; ++i) {
+        int nums;
+        cin >> nums;
+        listName.push_back(nums);
+    }
+    return listName;
 }
+
+void ListPrinter (list<int>& listName) {
+    for(auto it = listName.begin(); it != listName.end(); ++it){
+        cout << *it << " ";
+    }
+}
+
+int MiddleSum (list<int>& listName){
+    int sum = 0;
+    for(auto it = listName.begin(); it != listName.end(); ++it){
+        sum += *it;
+    }
+    int middleSum = sum / listName.size();
+    return middleSum;
+}*/
+//--------------Iterators task v2.0------------------------------------
+
+list<int> ListRead (int n){
+    list<int> nums;
+
+    for (int i = 0; i < n; ++i) {
+        int data;
+        cin >> data;
+        nums.push_back(data);
+    }
+    return nums;
+}
+
+int MiddleArifmetic (list<int>& nums){
+    int sum = 0;
+
+    for (auto it = nums.begin(); it != nums.end(); ++it) {
+        sum += *it;
+    }
+    int middle_sum = sum / nums.size();
+    return middle_sum;
+}
+
+void ListPrinter (list<int>& list_name){
+    for(auto it = list_name.begin(); it != list_name.end(); ++it){
+        cout << *it << " ";
+    }
+}
+//--------------Iterators task v3.0 - changing to std::pair-------------
+
+pair<int, string> PairRead (int n, string s){
+    pair<int, string> newPair;
+
+    /*for (int i = 0; i < ; ++i) {
+        
+    }*/
+    
+    cin >> n >> s;
+    
+}
+
+
+
+
 
 
 
 int main() {
 
-int operations_quantity;
-cin >> operations_quantity;
+//--------------Iterators task v3.0 - changing to std::pair-------------
+    int commandQuantity;
+    cin >> commandQuantity;
+    pair<int, string> viaPair;
+    
+    for (int i = 0; i < commandQuantity; ++i) {
+        
+    }
 
-map<int, string> map_one;
-map<int, string> map_two;
 
 
-// колличество букв встречающихся в сравниваемых словах
-// if (a[0][0] == b )
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//--------------Iterators task v2.0------------------------------------
+    int itemQuantity;
+    cin >> itemQuantity;
+    list<int> nums = ListRead(itemQuantity);
+
+    for(auto it = nums.begin(); it != nums.end(); ++it){
+        cout << *it << " ";
+    }
+    cout << endl;
+
+    auto it_max = nums.begin();
+    auto it_min = nums.begin();
+    for (auto it = nums.begin(); it != nums.end(); ++it){
+        if(*it_max < *it){
+            it_max = it;
+        }
+        if(*it_min > *it){
+            it_min = it;
+        }
+    }
+
+    int middle_sum = MiddleArifmetic(nums);
+    auto it_saved = *it_min;
+
+    cout << *it_max <<endl;
+    cout << it_saved << endl;
+    cout << middle_sum << endl;
+
+    nums.erase(it_min);
+    nums.insert(it_max, it_saved);
+    ListPrinter(nums);
+
+
+//--------------Iterators task v1.0------------------------------------
+   /* int comandQuantity;
+    cin >> comandQuantity;
+
+    list <int> testList = TestCountsAdding(comandQuantity);
+
+
+    auto it_max = testList.begin();
+    auto it_min = testList.begin();
+    for (auto it = testList.begin(); it != testList.end(); ++it){
+
+        if(*it_max < *it){
+            it_max = it;
+        }
+        if(*it_min > *it){
+            it_min = it;
+        }
+    }
+    ListPrinter(testList);
+    int middleSum = MiddleSum(testList);
+
+    int saved_it_min = *it_min;
+
+    cout << "\nlist max: " << *it_max << "\nlist min: " << saved_it_min << endl;
+    cout << "middle sum: " << middleSum << endl;
+
+    testList.erase(it_min);
+    testList.insert(++it_max, saved_it_min);
+    ListPrinter(testList);
+*/
+
+
+//--------------Capitals library----------------------------------
+
+
+//--------------Anagrams----------------------------------
+/*int n;
+cin >> n;
+    for (int i = 0; i < n; ++i) {
+        string word_1, word_2;
+        cin >> word_1 >> word_2;
+        if(BuildCharCounters(word_1) == BuildCharCounters(word_2)){
+            cout << "YES" << endl;
+        }else {
+            cout << "NO" << endl;
+        }
+    }*/
 //--------------Разбор map v4----------------------------------
 /*vector<string> v = {"one", "two", "three"};
 map<char, vector<string>> grouped_words;
@@ -217,7 +396,7 @@ PrintMap(dates);
 dates.erase(2020); // .erase(m) - удаляет элемент с ключем "m" из map
 PrintMap(dates);
 PrintReversedMap(ReversedMap(dates));*/
-//--------------Задача "Очередь v1"----------------------
+//--------------Задача "Очередь v1"----------------------------
 /*int opertations_quantity; // operations quantity
 cin >> opertations_quantity;
 vector<string> stackNum;
