@@ -6,6 +6,7 @@
 #include <map>
 #include <list>
 #include <utility>
+#include <functional>
 using namespace std;
 using namespace std::chrono;
 
@@ -204,8 +205,7 @@ int MiddleSum (list<int>& listName){
     return middleSum;
 }*/
 //--------------Iterators task v2.0------------------------------------
-
-list<int> ListRead (int n){
+/*list<int> ListRead (int n){
     list<int> nums;
 
     for (int i = 0; i < n; ++i) {
@@ -226,60 +226,86 @@ int MiddleArifmetic (list<int>& nums){
     return middle_sum;
 }
 
-void ListPrinter (list<int>& list_name){
-    for(auto it = list_name.begin(); it != list_name.end(); ++it){
+void ListPrinter (const list<int>& list_name){
+    for(auto it = list_name.cbegin(); it != list_name.cend(); ++it){
         cout << *it << " ";
     }
-}
+}*/
 //--------------Iterators task v3.0 - changing to std::pair-------------
-
-pair<int, string> PairRead (int n, string s){
+list<pair<int, string>> PairListRead (int n){
     pair<int, string> newPair;
+    list<pair<int, string>> info;
 
-    /*for (int i = 0; i < ; ++i) {
-        
-    }*/
-    
-    cin >> n >> s;
-    
+    for (int i = 0; i < n; ++i) {
+        int peopleQuantity;
+        string city;
+        cin >> peopleQuantity >> city;
+        newPair.first = peopleQuantity;
+        newPair.second = city;
+        info.push_back(newPair);
+    }
+    return info;
 }
+// - - - - - - - - - - - - - - - - // - - - - - - - - - - - - - - - - - - -
+// function initialization without defining (see to the main() )
 
+/*void func(list<pair<int,string>>& viaPair, std::function<void(int,string)> call){
+    for (auto it = viaPair.begin(); it != viaPair.end(); ++it){
+        call(it->first,it->second);
+    }
+}*/
+// - - - - - - - - - - - - - - - - // - - - - - - - - - - - - - - - - - - -
 
-
-
-
-
+int MiddleSum (list<pair<int, string>>& testList){
+    int sum = 0;
+    for(auto it = testList.begin(); it != testList.end(); ++it){
+        sum += it->first;
+    }
+    int middleSum = sum / testList.size();
+    return middleSum;
+}
+void PairListPrinting(const list<pair<int, string>>& printedList){
+    for (auto it = printedList.cbegin(); it != printedList.cend(); ++it){
+        cout << "People quantity: " << it->first << "\nCity: " << it->second << endl;
+    }
+}
 
 int main() {
-
-//--------------Iterators task v3.0 - changing to std::pair-------------
+//--------------Iterators task v3.0 - changing list to std::pair list-------------
     int commandQuantity;
     cin >> commandQuantity;
-    pair<int, string> viaPair;
-    
-    for (int i = 0; i < commandQuantity; ++i) {
-        
+    list<pair<int, string>> viaPair = PairListRead(commandQuantity);
+// - - - - - - - - - - - - - - - - // - - - - - - - - - - - - - - - - - - -
+// function definition in the main()
+
+    /*func(viaPair,[](int f, string s){cout << f << " " << s << endl;});*/
+// - - - - - - - - - - - - - - - - // - - - - - - - - - - - - - - - - - - -
+    PairListPrinting(viaPair);
+
+    auto itMax = viaPair.begin();
+    auto itMin = viaPair.begin();
+    for(auto it = viaPair.begin(); it != viaPair.end(); ++it){
+        if(itMax->first < it->first){
+            itMax = it;
+        }
+        if(itMin->first > it->first){
+            itMin = it;
+        }
     }
+    int middleSum = MiddleSum(viaPair);
+    auto itMinSaved = *itMin; // saving itMin for adding after itMax
+                              // (! data types is "narrow" place)
+    cout << "\nPeople quantity Min: " << itMin->first << endl;
+    cout << "\nPeople quantity Max: " << itMax->first << endl;
+    cout << "\nMiddle sum: " << middleSum << endl;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // Deleting min value and adding the value after max value
+    viaPair.erase(itMin);
+    PairListPrinting(viaPair);
+    viaPair.insert(++itMax, itMinSaved);
+    PairListPrinting(viaPair);
 //--------------Iterators task v2.0------------------------------------
-    int itemQuantity;
+    /*int itemQuantity;
     cin >> itemQuantity;
     list<int> nums = ListRead(itemQuantity);
 
@@ -307,10 +333,8 @@ int main() {
     cout << middle_sum << endl;
 
     nums.erase(it_min);
-    nums.insert(it_max, it_saved);
-    ListPrinter(nums);
-
-
+    nums.insert(++it_max, it_saved);
+    ListPrinter(nums);*/
 //--------------Iterators task v1.0------------------------------------
    /* int comandQuantity;
     cin >> comandQuantity;
