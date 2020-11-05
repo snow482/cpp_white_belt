@@ -1,2 +1,10 @@
 cpp_white_belt
-Need to change CMake.txt for building the projects. 
+
+
+
+
+
+
+
+
+For building the projects need to change CMake.txt
