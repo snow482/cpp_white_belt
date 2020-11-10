@@ -43,7 +43,31 @@ public:
         m_lastName[year] = last_name;
     }
     string GetFullName (int year){
-        // via lower_bound
+        for (auto it_f : m_firstName){
+            if(!it_f.first == year ) {
+                return "Incognito";
+            }
+        }
+        for (auto it_l : m_lastName){
+            if(!it_l.first == year){
+
+            }
+        }
+        // it - итератор
+        // it.first - год в m_firstName
+        // it.second - ИМЯ в m_firstName
+
+        // через доп строки или bool сделать
+        // написать приватный метод,
+        // 1) чекаем, пуст ли map (m.size()), если да, то - Incognito
+        // 2) бежим по map и ищем искомый год, если года нет, для имени и фамилии выводим - Incognito
+        // 3) бежим по map и ищем искомый год, если нет года и имени,то фамилию выводим -
+        //
+        // 3) бежим по map и ищем искомый год, если года нет, для имени и фамилии выводим map->second от предыдущего для
+
+
+
+        /*// via lower_bound
         auto it_firstName = m_firstName.lower_bound(year);
         auto it_lastName = m_lastName.lower_bound(year);
 
@@ -58,24 +82,7 @@ public:
         if(it_lastName == m_lastName.end()){
             return it_firstName->second + " with unknown last name";
         }
-        return it_firstName ->second + " " + it_lastName->second ;
-
-
-        // via loop
-        /*for(auto it = m_firstName.begin(); it != m_firstName.end(); ++it){
-           -----
-           cout << it->first << " " << it->second << endl;
-        }*/
-
-
-        // написать приватный метод,
-        // 1) чекаем, пуст ли map (m.size()), если да, то - Incognito
-        // 2) бежим по map и ищем искомый год, если года нет, для имени и фамилии выводим - Incognito
-        // 3) бежим по map и ищем искомый год, если нет года и имени,то фамилию выводим -
-        //
-        // 3) бежим по map и ищем искомый год, если года нет, для имени и фамилии выводим map->second от предыдущего для
-
-
+        return it_firstName ->second + " " + it_lastName->second ;*/
 
     }
 private:
