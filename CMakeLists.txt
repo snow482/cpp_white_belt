@@ -3,4 +3,4 @@ project(cpp_white_belt)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(cpp_white_belt "GetFullName-2 (classes, week 3).cpp")
+add_executable(cpp_white_belt "tests.cpp")
