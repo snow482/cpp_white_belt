@@ -66,12 +66,6 @@ public:
             return name + " " + last_name;
         }
 
-
-        /*if(chronology != ){
-
-        }*/
-
-        return name + " " + last_name;
     }
 
 private:

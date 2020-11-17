@@ -51,44 +51,29 @@ public:
     }
 
     string GetFullNameWithHistory(int year) {
-        string name = Checker(year, m_firstName); // выводим макс. значение которое сооветствует >= year
-        pair<int, string> yearName = {year, name};
-        for(auto it : m_firstName){ // бежим по map имен
-            if(it.second != name){  // если значение ключа массива имен != значению year
-                namesWithoutDubl.push_back(yearName); // вставить значение в мап namesWithoutDubl
-            }
-        }
-        for(auto it : namesWithoutDubl){
 
-        }
-
-
-
-        // найти и не выводить повторяющиеся элементы в map
-        /*auto name_check = namesWithoutDublicates.begin();
-        for(auto it : namesWithoutDublicates){
-           if(name_check != it.second){
-               name_check += it.second;
-
-
-        /*if (name == ""  && last_name == "" ) {
+        auto current_name = Checker_1(year, m_firstName);
+        auto current_last_name = Checker_1(year, m_lastName);
+        if (current_name.second == "" && current_last_name.second == "") {
             return "Incognito";
         }
-        if (name != ""  && last_name == "" ) {
-            return name + " with unknown last name";
+        vector<string> name_vec = PreviousData(current_name, m_firstName);
+        vector<string> last_name_vec = PreviousData(current_last_name, m_lastName);
+
+        if (current_name.second != "" && current_last_name.second == "") {
+            return current_name.second + PreviousDataPrinter(name_vec) + " with unknown last name";
         }
-        if (last_name != ""  && name == "" ) {
-            return last_name + " with unknown first name";
-        } else {
-            return name + " " + last_name;
-        }*/
+        if(current_name.second == "" && current_last_name.second != ""){
+            return  current_last_name.second + PreviousDataPrinter(last_name_vec) + " with unknown first name";
+        }
+        return current_name.second + PreviousDataPrinter(name_vec)+ " " +
+               current_last_name.second + PreviousDataPrinter(last_name_vec);
+
     }
 
 private:
     map<int, string> m_firstName;
     map<int, string> m_lastName;
-    vector<pair<int, string>> namesWithoutDubl;
-    vector<string> last_namesWithoutDubl;
 
     string Checker(int year, const map<int, string>& m) {
         string s;
@@ -99,18 +84,83 @@ private:
         }
         return s;
     }
+    string PreviousDataPrinter(const vector<string>& v){
 
-    // пробежаться по map и проверить
-    string Checker_1(int year, map<int, string>& m) {
-        string s;
-        for(auto it : m){
-            if(year <= it.first){
-                s = it.second;
-            }
+        if(v.empty()){
+            return "";
         }
+        string s = " (";
+        for(auto it = v.rbegin(); it != v.rend(); ++it){
+            s += *it;
+            if(it != --v.rend())
+            {s += ", ";}
+        }
+        s += ")";
         return s;
     }
+    vector <string> PreviousData ( const pair<int, string>& p, const map<int, string>& m){
+        vector<string> vec;
+        for(const auto& it : m){
+            if(it.first >= p.first){
+                break;
+            }
+            bool check = DublicateElemCheck(it.second,  vec);
+            if(!check){
+                 vec.push_back(it.second);
+            }
+        }
+        bool doubleCheck = DublicateElemCheck(p.second,  vec);
+        if(doubleCheck){
+             vec.erase(vec.begin()+vec.size()-1);
+        }
+        return vec;
+    }
+
+
+    // пробежаться по map и проверить
+    pair<int, string> Checker_1(int year, map<int, string>& m) {
+        pair<int, string> p;
+        for(auto it : m){
+            if(it.first <= year ){
+                p.first = it.first;
+                p.second = it.second;
+            }
+        }
+        return p;
+    }
+    bool DublicateElemCheck(string value, vector<string>& v){
+        if(v.empty()){
+            return false;
+        }
+        else {
+            string s = v[v.size()-1];
+            if(value == s){
+                return true;
+            }
+            return false;
+        }
+
+        /*auto tt = v.begin();
+        for(auto it = v.begin(); it != v.end(); ++it){
+            if(value == *it){
+                return true;
+            }
+        }*/
+    }
+
+
 };
+
+
+// найти элемент по году
+// (2) запомнить год и значение
+// передать их в вектор
+// пройтись по мапу до значений (2)
+// найти значения подобные (2)
+// сохранить значения (не год) в вектор
+// вывести эти значения п) Полина (Анна, Галина) Волосатова (Власова)
+//
+
 
 
 int main() {
@@ -140,13 +190,12 @@ int main() {
     cout << person.GetFullNameWithHistory(1966) << endl;
 
     person.ChangeLastName(1960, "Sergeeva");
-    for (int year : {1960, 1967}) {
+    for (int year : {1967}) {
         cout << person.GetFullNameWithHistory(year) << endl;
     }
 
     person.ChangeLastName(1961, "Ivanova");
     cout << person.GetFullNameWithHistory(1967) << endl;
-
 
     return 0;
 }
