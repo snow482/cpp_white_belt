@@ -14,7 +14,6 @@ using std::endl;
 
 class Person {
 public:
-
     void ChangeFirstName(int year, const string& first_name) {
         auto it = m_firstName.find(year);
         if (it != m_firstName.end()) { // условие означает, что элемент в map ЕСТЬ и повторяется (.end() - указывает ЗА ПОСЛЕДНИЙ элемент map)
@@ -51,7 +50,6 @@ public:
     }
 
     string GetFullNameWithHistory(int year) {
-
         auto current_name = Checker_1(year, m_firstName);
         auto current_last_name = Checker_1(year, m_lastName);
         if (current_name.second == "" && current_last_name.second == "") {
@@ -68,7 +66,6 @@ public:
         }
         return current_name.second + PreviousDataPrinter(name_vec)+ " " +
                current_last_name.second + PreviousDataPrinter(last_name_vec);
-
     }
 
 private:
@@ -85,7 +82,6 @@ private:
         return s;
     }
     string PreviousDataPrinter(const vector<string>& v){
-
         if(v.empty()){
             return "";
         }
@@ -115,9 +111,6 @@ private:
         }
         return vec;
     }
-
-
-    // пробежаться по map и проверить
     pair<int, string> Checker_1(int year, map<int, string>& m) {
         pair<int, string> p;
         for(auto it : m){
@@ -139,29 +132,8 @@ private:
             }
             return false;
         }
-
-        /*auto tt = v.begin();
-        for(auto it = v.begin(); it != v.end(); ++it){
-            if(value == *it){
-                return true;
-            }
-        }*/
     }
-
-
 };
-
-
-// найти элемент по году
-// (2) запомнить год и значение
-// передать их в вектор
-// пройтись по мапу до значений (2)
-// найти значения подобные (2)
-// сохранить значения (не год) в вектор
-// вывести эти значения п) Полина (Анна, Галина) Волосатова (Власова)
-//
-
-
 
 int main() {
     Person person;
