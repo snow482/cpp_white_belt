@@ -1,3 +1,4 @@
+#include <cassert>
 #include <iostream>
 #include <string>
 #include <set>
@@ -9,25 +10,49 @@ using std::string;
 using std::cin;
 using std::cout;
 using std::endl;
+using SynonymWords = map<string, set<string>>;
 
-class SynonymsTable{
+
+class SynonymsTable {
 public:
-    void AddSynonym(const string& w1, const string& w2){
+    SynonymWords synonymWords;
+
+    void AddSynonym(SynonymWords, const string &w1, const string &w2) {
         synonymWords[w1].insert(w2);
         synonymWords[w1].insert(w1);
     }
-    int GetSynonymsCount(const string& w){
+
+    int GetSynonymsCount(map<string, set<string>> m, const string &w) {
         return synonymWords[w].size();
     }
-    bool SynonymsChecking(const string& w1, const string& w2){
-        if(synonymWords[w1].count(w2) == 1){
+
+    bool SynonymsChecking(const string &w1, const string &w2) {
+        if (synonymWords[w1].count(w2) == 1) {
             return true;
         }
         return false;
     }
 
-private:
-    map<string, set<string>> synonymWords;
+    void Test() {
+        {
+            map<string, set<string>> empty;
+            AddSynonym("a", "b");
+            map<string, set<string>> expected = {
+                    {"a", {"b"}},
+                    {"b", {"a"}}
+            };
+            assert(empty == expected);
+            cout << "TEST: OK" << endl;
+        }
+        {
+            map<string, set<string>> synonymsCheck = {
+                    {"a", {"b"}},
+                    {"b", {"a", "c"}},
+                    {"c", {"b"}}
+            };
+            AddSynonym(synonymsCheck, "a", "c");
+        }
+    }
 };
 
 int main(){
@@ -61,4 +86,6 @@ int main(){
             }
         }
     }
+
+    return 0;
 }
