@@ -72,7 +72,7 @@ int main(){
     stringstream dur_ss("13:14");
     /*Duration dur1 = ReadDuration(dur_ss);*/
     Duration dur1; // constructor for default time adding
-    dur_ss >> dur1;
+    // dur_ss >> dur1;
     Duration dur2  = {0, 47};
     /*PrintDuration(cout, dur1);*/ // without overloading operators
     cout << dur1 + dur2 << endl;
@@ -82,3 +82,11 @@ int main(){
 
 
 }
+
+
+
+
+
+
+
+
