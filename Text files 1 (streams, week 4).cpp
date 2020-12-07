@@ -11,8 +11,8 @@ using std::string;
 using std::cin;
 using std::cout;
 using std::endl;
-using std::ifstream;    // for reading (successor from - istream)
-using std::ofstream;    // ofstream - for writing (successor from - ostream)
+using std::ifstream;
+using std::ofstream;
 using std::ostream;
 using std::ios;
 
