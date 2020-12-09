@@ -58,7 +58,8 @@ int main() {
 
     int saved_it_min = *it_min;
 
-    cout << "\nlist max: " << *it_max << "\nlist min: " << saved_it_min << endl;
+    cout << "\nlist max: " << *it_max << "\nlist min: "
+         << saved_it_min << endl;
     cout << "middle sum: " << middleSum << endl;
 
     testList.erase(it_min);
