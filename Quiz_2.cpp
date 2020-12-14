@@ -29,24 +29,47 @@ void MultipRows( int arr[3][3]){
 
 int main(){
 
-    const int n = 3;
+
+    int rows, colomns;
+    cin >> rows >> colomns;
+    vector<vector<int>> mtrx;
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < colomns; ++j) {
+            /*mtrx.push_back(vector<int>());*/
+            cin >> mtrx[i][j];
+        }
+    }
+
+    /*vector<vector<int>> mtrx = {{2,6,7}, {7,8,7}, {4,2,1}};*/
+
+    /*int sum = 0;
+    for (int i = 0; i < mtrx.size(); ++i) {
+       sum = (mtrx[0][0] * mtrx[0][1] * mtrx[0][2]) + (mtrx[1][0] * mtrx[1][1] * mtrx[1][2]) + (mtrx[2][0] * mtrx[2][1] * mtrx[2][2]);
+
+
+    }*/
+
+
+
+
+    /*const int n = 3;
     int m [n][n];                       // 5 rows, 5 columns
-    srand(time(0));         // rand function initialization
+    srand((0));                         // rand function initialization
     for (int i = 0; i < n; ++i) {       // for rows
         for(int j = 0; j < n; ++j){     // for columns
             m[i][j] = rand() % 9;       // filling with random numbers from 0 to 9
         }
-    }
+    }*/
 
     // printing filled matrix
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) {
-            cout << m[i][j] << " ";
+    for (int i = 0; i < mtrx.size(); ++i) {
+        for (int j = 0; j < mtrx.size(); ++j) {
+            cout << mtrx[i][j] << " ";
         }
         cout << endl;
+
     }
-
-
+    /*cout << sum;*/
 
 
 
