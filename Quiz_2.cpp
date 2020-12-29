@@ -10,35 +10,44 @@ using std::endl;
 
 // 1st
 /*Дана целочисленная матрица {Aij}i=1,...,n;j=1,...,m (n,m<=20).
-Найти сумму произведений элементов строк.*/
+  Найти сумму произведений элементов строк.*/
 
-// m[1][1] m[1][2] m[1][3]
-// m[2][1] m[2][2] m[2][3]
-// m[3][1] m[3][2] m[3][3]
-// sum = (m[1][1] * m[1][2] * m[1][3]) + (m[2][1] * m[2][2] * m[2][3]) + (m[3][1] * m[3][2] * m[3][3])
-
+// m[0][0] m[0][1] m[0][2]
+// m[1][0] m[1][1] m[1][2]
+// m[2][0] m[2][1] m[2][2]
+// sum = (m[0][0] * m[0][1] * m[0][2]) + (m[1][0] * m[1][1] * m[1][2]) + (m[2][0] * m[2][1] * m[2][2])
 
 // 2nd
-/*#define n;
-#define m;
-
-void MultipRows( int arr[3][3]){
-
-}*/
 
 
 int main(){
 
-
-    int rows, colomns;
+    /*int rows, colomns;
     cin >> rows >> colomns;
-    vector<vector<int>> mtrx;
+    int sum = 0;
+    vector<vector<int>> m(rows, vector<int>(colomns));
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < colomns; ++j) {
-            /*mtrx.push_back(vector<int>());*/
-            cin >> mtrx[i][j];
+            cin >> m[i][j];
         }
     }
+    *//* ------------------------------------------------------- *//*
+    for (int i = 0; i < rows; ++i) {
+        int pr = 1;                                             // после суммирования pr к sum, меняем снова pr на 1
+        for (int j = 0; j < colomns; ++j) {
+            pr *= m[i][j];
+        }
+        sum += pr;                                              // пишем сумму произведения 1ой строки
+        cout << "i:" << i << " "<< pr << endl;
+    }
+    cout << "sum: " << sum <<endl;
+    *//* ------------------------------------------------------- *//*
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < colomns; ++j) {
+            cout << m[i][j] << " ";
+        }
+        cout << endl;
+    }*/
 
     /*vector<vector<int>> mtrx = {{2,6,7}, {7,8,7}, {4,2,1}};*/
 
@@ -48,9 +57,6 @@ int main(){
 
 
     }*/
-
-
-
 
     /*const int n = 3;
     int m [n][n];                       // 5 rows, 5 columns
@@ -62,19 +68,8 @@ int main(){
     }*/
 
     // printing filled matrix
-    for (int i = 0; i < mtrx.size(); ++i) {
-        for (int j = 0; j < mtrx.size(); ++j) {
-            cout << mtrx[i][j] << " ";
-        }
-        cout << endl;
 
-    }
     /*cout << sum;*/
-
-
-
-
-
 
 
     /*vector<int> vec = {};
@@ -89,4 +84,36 @@ int main(){
     }*/
 
 
+
+
+
+    const int raww = 10;
+    const int col = 10;
+    /*int aRr[raww][col] = {{1, 2, 1}, {1, 1, 1}, {1,2, 3}};*/ // либо так
+    int total_summa = 0;
+
+    // заполнение матрицы и операции
+    vector<vector<int>> vec (raww, vector<int>(col));
+    for (int i = 0; i < raww; ++i) {
+        for (int j = 0; j < col; ++j) {
+            vec[i][j] = (i) * (j); // либо (i+1) * (j+1)
+
+            total_summa += vec[i][j]; // сумма
+        }
+    }
+    cout << "summa: " << total_summa << endl;
+
+    // вывод матрицы
+    for (int i = 1; i < raww; ++i) {
+        for (int j = 1; j < col; ++j) {
+            cout << vec[i][j] << "\t";
+        }
+        cout << endl;
+    }
+
+
+
+
+
+    return 0;
 }
