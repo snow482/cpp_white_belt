@@ -51,13 +51,6 @@ int main(){
 
     /*vector<vector<int>> mtrx = {{2,6,7}, {7,8,7}, {4,2,1}};*/
 
-    /*int sum = 0;
-    for (int i = 0; i < mtrx.size(); ++i) {
-       sum = (mtrx[0][0] * mtrx[0][1] * mtrx[0][2]) + (mtrx[1][0] * mtrx[1][1] * mtrx[1][2]) + (mtrx[2][0] * mtrx[2][1] * mtrx[2][2]);
-
-
-    }*/
-
     /*const int n = 3;
     int m [n][n];                       // 5 rows, 5 columns
     srand((0));                         // rand function initialization
@@ -83,8 +76,15 @@ int main(){
         cout << vec[i] << " ";
     }*/
 
+    // for(unsigned int n = 100; n >= 0; n--) переполнение типа
+    // unsigned int без знаковый и цикл будет бесконечным
 
-
+    /* квадратная матрица, n на n, где n вводится (с файла или клавы), заполнить матрицу змейкой 
+    1     2    3    4  5
+    16   17   18   19  6
+    15   24   25   20  7
+    14   23   22   21  8
+    13   12   11   10  9*/
 
 
     const int raww = 10;
