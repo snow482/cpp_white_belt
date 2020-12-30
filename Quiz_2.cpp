@@ -1,9 +1,12 @@
 #include <iostream>
+#include <fstream>
+#include <iomanip>
 #include <map>
 #include <vector>
 
 using std::map;
 using std::vector;
+using std::ifstream;
 using std::cin;
 using std::cout;
 using std::endl;
@@ -86,10 +89,51 @@ int main(){
     14   23   22   21  8
     13   12   11   10  9*/
 
+    int rows_col_num;
+    cin >> rows_col_num ;
+    vector<vector<int>> mtrx(rows_col_num, vector<int>(rows_col_num));
+    int numbers = 25;
+    ifstream file("C:/git/numbers.txt");
+/*
+    for (int i = 0; i < rows_col_num; ++i) {
+        for (int j = 0; j < rows_col_num; ++j) {
+            for (int i = 1; i <= numbers; ++i) {
+                mtrx.push_back(vector<int>(numbers));
+            }
+        }
+    }*/
 
-    const int raww = 10;
+    for (int i = 0; i < rows_col_num; ++i) {
+        for (int j = 0; j < rows_col_num; ++j) {
+            file >> mtrx[i][j];
+
+
+            for (int k = 0; k < rows_col_num; ++k) {
+
+            }
+
+            /*file >> mtrx[i][j];*/
+        }
+    }
+
+    for (int i = 0; i < rows_col_num; ++i) {
+        for (int j = 0; j < rows_col_num; ++j) {
+            cout << mtrx[i][j] << "\t";
+        }
+        cout << endl;
+    }
+
+
+
+
+
+
+
+
+    // ----------------- тренировка -----------------
+    /*const int raww = 10;
     const int col = 10;
-    /*int aRr[raww][col] = {{1, 2, 1}, {1, 1, 1}, {1,2, 3}};*/ // либо так
+    *//*int aRr[raww][col] = {{1, 2, 1}, {1, 1, 1}, {1,2, 3}};*//* // либо так
     int total_summa = 0;
 
     // заполнение матрицы и операции
@@ -109,8 +153,8 @@ int main(){
             cout << vec[i][j] << "\t";
         }
         cout << endl;
-    }
-
+    }*/
+    // -----------------  ----------------- -----------------
 
 
 
